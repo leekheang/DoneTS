@@ -1,19 +1,27 @@
 export {}
 
 class Point {
-    x: number
-    y: number
-
-    constructor(x?: number , y?: number){
-        this.x = x ;
-        this.y = y; 
+    constructor(private _x?: number ,private _y?: number){
+        // this.x = _x ;
+        // this.y = y; 
     }
     result(){
-        console.log('x is : ' + this.x + ' , y is : ' + this.y  )
+        console.log('x is : ' + this._x + ' , y is : ' + this._y  )
+    }
+
+    get x(){
+        return this._x 
+    }
+    set x(value){
+        if (value < 0 )
+            throw ("x cannot be less than 0 ")
     }
 }
 
 let point  = new Point(1 , 2);
 // point.x = 12;
 // point.y = 10;
+let x = point.x;
+point.x = 10;
+console.log("value " + x)
 point.result();
